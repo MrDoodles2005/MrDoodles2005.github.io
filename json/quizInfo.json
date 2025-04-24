@@ -1,0 +1,36 @@
+{
+    "quizzes": [
+        {
+            "image": "img/quiz-img/FlagsStockImage.jpg",
+            "image-desc": "Mix of European Flags on Poles",
+            "title": "Guess The Flag - Quiz",
+            "quiz-desc": "Try and match the flag shown to its respective European Country",
+            "ID": "guessFlag",
+            "link": "quizzes/flagQuiz.html"
+        },
+        {
+            "image": "img/quiz-img/MapOfEurope.jpg",
+            "image-desc": "Map Of Europe",
+            "title": "Guess The Country - Quiz",
+            "quiz-desc": "Guess which European country is being described",
+            "ID": "guessCountry",
+            "link": "#"
+        },
+        {
+            "image": "img/quiz-img/test.jpg",
+            "image-desc": "Test",
+            "title": "Test - Quiz",
+            "quiz-desc": "Test Description",
+            "ID": "test",
+            "link": "#"
+        },
+        {
+            "image": "img/quiz-img/test.jpg",
+            "image-desc": "Test",
+            "title": "Test - Quiz",
+            "quiz-desc": "Test Description",
+            "ID": "test",
+            "link": "#"
+        }
+    ]
+}

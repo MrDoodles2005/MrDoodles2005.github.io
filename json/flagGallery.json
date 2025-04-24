@@ -1,0 +1,254 @@
+{
+    "countries": [
+        {
+            "flag": "img/flags/Flag_of_Albania.png",
+            "description": "Flag of Albania",
+            "name": "Albania"
+        },
+        {
+            "flag": "img/flags/Flag_of_Andorra.png",
+            "description": "Flag of Andorra",
+            "name": "Andorra"
+        },
+        {
+            "flag": "img/flags/Flag_of_Armenia.png",
+            "description": "Flag of Armenia",
+            "name": "Armenia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Austria.png",
+            "description": "Flag of Austria",
+            "name": "Austria"
+        },
+        {
+            "flag": "img/flags/Flag_of_Azerbaijan.png",
+            "description": "Flag of Azerbaijan",
+            "name": "Azerbaijan"
+        },
+        {
+            "flag": "img/flags/Flag_of_Belarus.png",
+            "description": "Flag of Belarus",
+            "name": "Belarus"
+        },
+        {
+            "flag": "img/flags/Flag_of_Belgium.png",
+            "description": "Flag of Belgium",
+            "name": "Belgium"
+        },
+        {
+            "flag": "img/flags/Flag_of_Bosnia_and_Herzegovina.png",
+            "description": "Flag of Bosnia and Herzegovina",
+            "name": "Bosnia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Bulgaria.png",
+            "description": "Flag of Bulgaria",
+            "name": "Bulgaria"
+        },
+        {
+            "flag": "img/flags/Flag_of_Croatia.png",
+            "description": "Flag of Croatia",
+            "name": "Croatia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Cyprus.png",
+            "description": "Flag of Cyprus",
+            "name": "Cyprus"
+        },
+        {
+            "flag": "img/flags/Flag_of_Czechia.png",
+            "description": "Flag of Czechia",
+            "name": "Czechia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Denmark.png",
+            "description": "Flag of Denmark",
+            "name": "Denmark"
+        },
+        {
+            "flag": "img/flags/Flag_of_Estonia.png",
+            "description": "Flag of Estonia",
+            "name": "Estonia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Finland.png",
+            "description": "Flag of Finland",
+            "name": "Finland"
+        },
+        {
+            "flag": "img/flags/Flag_of_France.png",
+            "description": "Flag of France",
+            "name": "France"
+        },
+        {
+            "flag": "img/flags/Flag_of_Germany.png",
+            "description": "Flag of Germany",
+            "name": "Germany"
+        },
+        {
+            "flag": "img/flags/Flag_of_Greece.png",
+            "description": "Flag of Greece",
+            "name": "Greece"
+        },
+        {
+            "flag": "img/flags/Flag_of_Hungary.png",
+            "description": "Flag of Hungary",
+            "name": "Hungary"
+        },
+        {
+            "flag": "img/flags/Flag_of_Iceland.png",
+            "description": "Flag of Iceland",
+            "name": "Iceland"
+        },
+        {
+            "flag": "img/flags/Flag_of_Ireland.png",
+            "description": "Flag of Ireland",
+            "name": "Ireland"
+        },
+        {
+            "flag": "img/flags/Flag_of_Italy.png",
+            "description": "Flag of Italy",
+            "name": "Italy"
+        },
+        {
+            "flag": "img/flags/Flag_of_Kazakhstan.png",
+            "description": "Flag of Kazakhstan",
+            "name": "Kazakhstan"
+        },
+        {
+            "flag": "img/flags/Flag_of_Kosovo.png",
+            "description": "Flag of Kosovo",
+            "name": "Kosovo"
+        },
+        {
+            "flag": "img/flags/Flag_of_Latvia.png",
+            "description": "Flag of Latvia",
+            "name": "Latvia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Liechtenstein.png",
+            "description": "Flag of Liechtenstein",
+            "name": "Liechtenstein"
+        },
+        {
+            "flag": "img/flags/Flag_of_Lithuania.png",
+            "description": "Flag of Lithuania",
+            "name": "Lithuania"
+        },
+        {
+            "flag": "img/flags/Flag_of_Luxembourg.png",
+            "description": "Flag of Luxembourg",
+            "name": "Luxembourg"
+        },
+        {
+            "flag": "img/flags/Flag_of_Malta.png",
+            "description": "Flag of Malta",
+            "name": "Malta"
+        },
+        {
+            "flag": "img/flags/Flag_of_Moldova.png",
+            "description": "Flag of Moldova",
+            "name": "Moldova"
+        },
+        {
+            "flag": "img/flags/Flag_of_Monaco.png",
+            "description": "Flag of Monaco",
+            "name": "Monaco"
+        },
+        {
+            "flag": "img/flags/Flag_of_Montenegro.png",
+            "description": "Flag of Montenegro",
+            "name": "Montenegro"
+        },
+        {
+            "flag": "img/flags/Flag_of_the_Netherlands.png",
+            "description": "Flag of the Netherlands",
+            "name": "Netherlands"
+        },
+        {
+            "flag": "img/flags/Flag_of_North_Macedonia.png",
+            "description": "Flag of North Macedonia",
+            "name": "N. Macedonia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Norway.png",
+            "description": "Flag of Norway",
+            "name": "Norway"
+        },
+        {
+            "flag": "img/flags/Flag_of_Poland.png",
+            "description": "Flag of Poland",
+            "name": "Poland"
+        },
+        {
+            "flag": "img/flags/Flag_of_Portugal.png",
+            "description": "Flag of Portugal",
+            "name": "Portugal"
+        },
+        {
+            "flag": "img/flags/Flag_of_Romania.png",
+            "description": "Flag of Romania",
+            "name": "Romania"
+        },
+        {
+            "flag": "img/flags/Flag_of_Russia.png",
+            "description": "Flag of Russia",
+            "name": "Russia"
+        },
+        {
+            "flag": "img/flags/Flag_of_San_Marino.png",
+            "description": "Flag of San Marino",
+            "name": "San Marino"
+        },
+        {
+            "flag": "img/flags/Flag_of_Serbia.png",
+            "description": "Flag of Serbia",
+            "name": "Serbia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Slovakia.png",
+            "description": "Flag of Slovakia",
+            "name": "Slovakia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Slovenia.png",
+            "description": "Flag of Slovenia",
+            "name": "Slovenia"
+        },
+        {
+            "flag": "img/flags/Flag_of_Spain.png",
+            "description": "Flag of Spain",
+            "name": "Spain"
+        },
+        {
+            "flag": "img/flags/Flag_of_Sweden.png",
+            "description": "Flag of Sweden",
+            "name": "Sweden"
+        },
+        {
+            "flag": "img/flags/Flag_of_Switzerland.png",
+            "description": "Flag of Switzerland",
+            "name": "Switzerland"
+        },
+        {
+            "flag": "img/flags/Flag_of_Turkiye.png",
+            "description": "Flag of Türkiye",
+            "name": "Türkiye"
+        },
+        {
+            "flag": "img/flags/Flag_of_Ukraine.png",
+            "description": "Flag of Ukraine",
+            "name": "Ukraine"
+        },
+        {
+            "flag": "img/flags/Flag_of_United_Kingdom.png",
+            "description": "Flag of United Kingdom",
+            "name": "UK"
+        },
+        {
+            "flag": "img/flags/Flag_of_Vatican_City.png",
+            "description": "Flag of Vatican City",
+            "name": "Vatican City"
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/flagQuizStyle.css">
+    <script defer type="text/javascript" src="../js/flagQuiz.js"></script>
+    <title>Click EU</title>
+</head>
+<body>
+    <div id="wrapperID" class="wrapper">
+        <header class="main-header">
+            <h1 id="headerLogo"><span><i class="fa-solid fa-earth-europe"></i></span> Click EU</h1>
+            <nav>
+                <ul>
+                    <li id="homeLi"><a id="homeButton" href="../home.html">Home <span><i class="fa-solid fa-house"></i></span></a></li>
+                    <li id="listLi"><a id="listButton" href="../list.html">List View <span><i class="fa-solid fa-bars"></i></span></a></li>
+                    <li id="quizzesLi"><a id="quizzesButton" href="../quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a></li>
+                </ul>
+                <div class="theme-dropdown">
+                    <a id="themeButton" href="#">Theme <span><i class="fa-solid fa-palette"></i></span></a>
+                    <div id="themeDropdownContent" class="theme-dropdown-content">
+                        <a id="systemTheme" href="#">System Theme <span><i class="fa-solid fa-desktop"></i></span></a>
+                        <a id="lightTheme" href="#">Light Mode <span><i class="fa-solid fa-sun"></i></span></a>
+                        <a id="darkTheme" href="#">Dark Mode <span><i class="fa-solid fa-moon"></i></span></a>
+                    </div>
+                </div>
+            </nav>
+            <div id="collapsedNav">
+                <button id="collapsedNavButton"><i class="fa-solid fa-bars"></i></button>
+                <div id="navDropdownContent" class="nav-dropdown-content">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="quizHeader" class="quiz-header"></div>
+            <div class="quiz">
+                <div class="quiz-top">
+                    <div>
+                        <h2>Find <span id="country"></span></h2>
+                        <h2>Score: <span id="score"></span>/50</h2>
+                    </div>
+                    <h2 id="completedText"></h2>
+                </div>
+                <div id="flagGrid" class="flag-grid"></div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
