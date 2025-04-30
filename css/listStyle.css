@@ -261,8 +261,10 @@ main li img{
 }
 
 main li h2 {
+    display: inline-block;
     margin: 0px 15px;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 
@@ -275,13 +277,17 @@ main li h2 {
 @media (max-width: 500px) {
     main li h2 {
         font-size: 2em;
-        max-width: 120px;
         margin-right: 0;
+    }
+
+    main li .country-container {
+        max-width: calc(100% - 57px);
     }
 }
 
 main li i {
     margin: 28px;
+    margin-left: 5px;
     font-size: 1.8em;
 }
 
@@ -314,11 +320,25 @@ main .info-content {
     border-bottom: none;
 }
 
+.info-content .quick-facts {
+    margin-top: 10px;
+}
+
 .info-content article h3 {
-    margin-bottom: 10px;
+    display: inline-block;
+    margin: 0px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px 8px 0px 0px;
+    padding: 5px;
+    border: solid 2px light-dark(rgba(0, 0, 0, 0.5), transparent);
+    border-bottom: none;
 }
 
 .info-content article p {
-    margin-top: 10px;
+    margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0px 8px 8px 8px;
+    padding: 5px;
+    border: solid 2px light-dark(rgba(0, 0, 0, 0.5), transparent);
 }
 

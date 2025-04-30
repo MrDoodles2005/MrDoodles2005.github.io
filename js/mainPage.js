@@ -18,10 +18,16 @@ var darkThemeButton = document.getElementById('darkTheme');
 // Night Mode Button Functionality
 themeButton.addEventListener("click", function(e) {
     e.preventDefault();
-    if (themeDropdownContent.style.display == "none")
+    if (themeDropdownContent.style.display == "none") {
         themeDropdownContent.style.display = "block";
-    else
+        
+    }
+    else {
         themeDropdownContent.style.display = "none";
+    }
+        
+
+    
 })
 
 systemThemeButton.addEventListener("click", function(e) {
@@ -118,7 +124,7 @@ function displayInfo(index, flagInfo) {    // Adds country info to the map info 
             else if (el.name === "North Macedonia")
                 countryName.style.maxWidth = "200px";
             else
-                countryName.style.maxWidth = "none";
+                countryName.style.maxWidth = "calc(100%)";
 
             var fullNamesContainer = document.createElement("div");
             fullNamesContainer.className = "full-names-container";
@@ -178,70 +184,78 @@ function displayInfo(index, flagInfo) {    // Adds country info to the map info 
             // Brief History
             var briefHistory = document.createElement("article");
             briefHistory.className = "brief-history";
-            var bhHeader = document.createElement("h3");
-            bhHeader.innerHTML = "Brief History";
             var bhContent = document.createElement("p");
             bhContent.innerHTML = el["brief-history"];
 
             // Quick Facts
             var quickFacts = document.createElement("article");
             quickFacts.className = "quick-facts";
-            var qfHeader = document.createElement("h3");
-            qfHeader.innerHTML = "Quick Facts";
             var qfContent = document.createElement("p");
             qfContent.innerHTML = el["quick-facts"];
 
             // Language(s)
             var language = document.createElement("article");
             language.className = "language";
-            var lHeader = document.createElement("h3");
-            lHeader.innerHTML = "Language";
             var lContent = document.createElement("p");
             lContent.innerHTML = el.language;
 
-            var currentPage = 2;
-
             // Adds carousel nav
             var nav = document.createElement("nav");
-            var navPrev = document.createElement("button");
-            navPrev.innerText = "<";
-            navPrev.addEventListener("click", function(e) {
+            var historyButton = document.createElement("button");
+            var hbText = document.createElement("h3");
+            hbText.innerText = "Brief History";
+            historyButton.appendChild(hbText);
+            historyButton.addEventListener("click", function(e) {
                 e.preventDefault();
-                console.log(currentPage);
-                if (currentPage != 1) {
-                    --currentPage;
 
-                    hideNav(currentPage, navPrev, navNext, nav);
+                historyButton.className = "selected-nav";
+                factsButton.classList.remove("selected-nav");
+                langButton.classList.remove("selected-nav");
 
-                    infoBody.style.left = "calc(" + ((currentPage - 1) * -100) + "% - " + ((currentPage - 1) * 25) + "px)"; 
-                }
+                infoBody.style.left = "0px"; 
+            
             })
-            var navNext = document.createElement("button");
-            navNext.innerText = ">";
-            navNext.addEventListener("click", function(e) {
+            var factsButton = document.createElement("button");
+            factsButton.className = "selected-nav";
+            var fbText = document.createElement("h3");
+            fbText.innerText = "Quick Facts";
+            factsButton.appendChild(fbText);
+            factsButton.addEventListener("click", function(e) {
                 e.preventDefault();
-                console.log(currentPage);
-                if (currentPage != 3) {
-                    ++currentPage;
 
-                    hideNav(currentPage, navPrev, navNext, nav);
+                factsButton.className = "selected-nav";
+                historyButton.classList.remove("selected-nav");
+                langButton.classList.remove("selected-nav");
 
-                    infoBody.style.left = "calc(" + ((currentPage - 1) * -100) + "% - " + ((currentPage - 1) * 25) + "px)"; 
-                }
+                // infoBody.style.left = "-100%";
+                infoBody.style.setProperty('left', 'calc(-100% - 25px'); 
             })
-            nav.appendChild(navPrev);
-            nav.appendChild(navNext);
+            var langButton = document.createElement("button");
+            var lbText = document.createElement("h3");
+            lbText.innerText = "Language";
+            langButton.appendChild(lbText);
+            langButton.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                langButton.className = "selected-nav";
+                factsButton.classList.remove("selected-nav");
+                historyButton.classList.remove("selected-nav");
+
+                // infoBody.style.left = "-200%"; 
+                infoBody.style.setProperty('left', 'calc(-200% - 50px'); 
+
+            })
+            nav.appendChild(historyButton);
+            nav.appendChild(factsButton);
+            nav.appendChild(langButton);
 
             // Add to Body Containers
-            briefHistory.appendChild(bhHeader);
             briefHistory.appendChild(bhContent);
             bhBody.appendChild(briefHistory);
 
-            quickFacts.appendChild(qfHeader);
             quickFacts.appendChild(qfContent);
             qfBody.appendChild(quickFacts);
 
-            language.appendChild(lHeader);
             language.appendChild(lContent);
             lBody.appendChild(language);
 
@@ -251,8 +265,8 @@ function displayInfo(index, flagInfo) {    // Adds country info to the map info 
 
             carousel.appendChild(infoBody);
 
-            infoAndNav.appendChild(carousel);
             infoAndNav.appendChild(nav);
+            infoAndNav.appendChild(carousel);
 
             infoBox.appendChild(infoBoxHeader);
             infoBox.appendChild(infoAndNav);
@@ -309,26 +323,6 @@ function showExpandedNames(fullNamesContainer, el) {
     })
 
     fullNamesContainer.appendChild(lessNamesButton);
-}
-
-function hideNav(currentPage, prev, next, nav) {
-    if (currentPage == 1) {
-        prev.style.display = "none";
-        nav.style.justifyContent = "end"
-    }
-    else
-    {
-        prev.style.display = "inline-block";
-        nav.style.justifyContent = "space-between"
-    }
-
-    if (currentPage == 3) {
-        next.style.display = "none";
-    }
-    else
-    {
-        next.style.display = "inline-block";
-    }
 }
 
 collapsedNavButton.addEventListener("click", function(e) {

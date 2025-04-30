@@ -286,6 +286,10 @@ main {
             .quiz-header p {
                 margin: 15px 5px;
             }
+
+            .quiz-top div {
+                flex-direction: row;
+            }
         }
 
         @media (max-width: 500px) {
@@ -306,6 +310,10 @@ main {
             .quiz-header p {
                 margin: 10px 5px 0px 5px;
             }
+
+            .quiz-top div {
+                flex-direction: column;
+            }
         }
     }
 }
@@ -323,18 +331,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-@media (min-width: 500px) {
-    .quiz-top div {
-        flex-direction: row;
-    }
-}
-
-@media (max-width: 500px) {
-    .quiz-top div {
-        flex-direction: column;
-    }
 }
 
 .quiz-top h2 {
