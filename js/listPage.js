@@ -90,11 +90,12 @@ fetch("../json/flagGallery.json").then(function(res) {
             listButton.addEventListener("click", function(e) {
                 e.preventDefault();
     
-                if (collapsed)
+                if (collapsed) {
                     displayDropDown(i, infoContent, chevron);
-                else
+                }
+                else {
                     collapseDropDown(i, infoContent, chevron);
-    
+                }
                 collapsed = !collapsed;
             })
         

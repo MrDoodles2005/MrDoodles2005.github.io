@@ -2,6 +2,9 @@ var gridList = document.getElementById('gridList');
 var mapBox = document.getElementById('mapBox');
 var headerLogo = document.getElementById('headerlogo');
 
+var map = document.getElementById('interactiveMap');
+var newX = 0, newY = 0, startX = 0, startY = 0;
+
 var collapsedNavButton = document.getElementById('collapsedNavButton');
 var navDropdownContent = document.getElementById('navDropdownContent');
 var themeButton = document.getElementById('themeButton');
@@ -55,6 +58,59 @@ function setColorScheme(mode) {
     document.documentElement.dataset.colorScheme = mode;
 }
 
+map.addEventListener('mousedown', mouseDown);
+map.addEventListener('touchstart', touchStart);
+
+function mouseDown(e) {
+    startX = e.clientX;
+    startY = e.clientY;
+
+    document.addEventListener('mousemove', mouseMove);
+    document.addEventListener('mouseup', mouseUp);
+}
+
+function mouseMove(e) {
+    newX = startX - e.clientX ;
+    newY = startY - e.clientY ;
+  
+    startX = e.clientX;
+    startY = e.clientY;
+
+    // map.style.top = (map.offsetTop - newY) + 'px';
+    // map.style.left = (map.offsetLeft - newX) + 'px';
+
+    map.style.top = 'clamp(' + (-402 - (1000 - mapBox.offsetHeight)) + 'px, ' + (map.offsetTop - newY) + 'px, 0px)';
+    map.style.left = 'clamp(' + (-22 - (1180 - mapBox.offsetWidth)) + 'px, ' + (map.offsetLeft - newX) + 'px, 0px)';
+}
+
+function mouseUp(e){
+    document.removeEventListener('mousemove', mouseMove);
+}
+
+function touchStart(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+
+    document.addEventListener('touchmove', touchMove);
+    document.addEventListener('touchend', touchEnd);
+}
+
+function touchMove(e) {
+    newX = startX - e.touches[0].clientX;
+    newY = startY - e.touches[0].clientY;
+
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+
+    map.style.top = 'clamp(' + (-402 - (1000 - mapBox.offsetHeight)) + 'px, ' + (map.offsetTop - newY) + 'px, 0px)';
+    map.style.left = 'clamp(' + (-22 - (1180 - mapBox.offsetWidth)) + 'px, ' + (map.offsetLeft - newX) + 'px, 0px)';
+}
+
+function touchEnd(e) {
+    document.removeEventListener('touchmove', touchMove);
+    document.removeEventListener('touchend', touchEnd);
+}
+
 // gets the flagGallery json file and creates the grid using its contents
 fetch("../json/flagGallery.json").then(function(res) {
     res.json().then(function(json) {
@@ -70,7 +126,7 @@ fetch("../json/flagGallery.json").then(function(res) {
             // When button is clicked, do displayInfo()
             gridButton.addEventListener("click", function(e) {
                 e.preventDefault();
-                displayInfo(i, el);
+                displayInfo(i);
             })
 
             // Create flag image
@@ -97,17 +153,55 @@ fetch("../json/flagGallery.json").then(function(res) {
     })
 })
 
-function displayInfo(index, flagInfo) {    // Adds country info to the map info box
+fetch("../json/svgs.json").then(function(res) {
+    res.json().then(function(json) {
+        json.countries.forEach(function(el) {
+            var countrySVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            countrySVG.setAttribute('class', 'svgs')
+            countrySVG.id = el.name;
+            countrySVG.setAttribute('width', el.width);
+            countrySVG.setAttribute('height', el.height);
+            countrySVG.setAttribute('viewBox', "0 0 " + el.width + " " + el.height);
+            countrySVG.setAttribute('fill', "none");
+            for (var i = 0; i < el.paths.length; i++) {
+                var svgPath = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+                svgPath.setAttribute('d', el.paths[i]);
+                svgPath.setAttribute('stroke', "black");
+                countrySVG.appendChild(svgPath);
+            }
+
+            countrySVG.style.left = el.left;
+            countrySVG.style.top = el.top;
+
+            var countryIndex = el.index;
+
+            countrySVG.addEventListener('click', function(e) {
+                e.preventDefault();
+                displayInfo(countryIndex);
+
+                console.log(el.name);
+            })
+
+            map.appendChild(countrySVG);
+        })
+    })
+})
+
+function displayInfo(index) {    // Adds country info to the map info box
     fetch("../json/countryInfo.json").then(function(res) {
         res.json().then(function(json) {
             var el = json.countries[index];
 
-            // Clear mapBox
-            mapBox.innerHTML = "";
+            // Remove existing infobox;
+            var oldBox = document.getElementById("infoBox");
+            if (mapBox.contains(oldBox)) {
+                mapBox.removeChild(oldBox);
+            }
 
             // Create a box to hold the information
             var infoBox = document.createElement("div");
             infoBox.className = "info-box";
+            infoBox.id = "infoBox";
 
             // Create Header 
             var infoBoxHeader = document.createElement("header");
@@ -153,13 +247,31 @@ function displayInfo(index, flagInfo) {    // Adds country info to the map info 
 
             // Create flag
             var flag = document.createElement("img");
-            flag.src = flagInfo.flag;
-            flag.alt = flagInfo.description;
-            flag.title = flagInfo.description;
+            fetch("../json/flagGallery.json").then(function(res) {
+                res.json().then(function(json) {
+                    var flagInfo = json.countries[index];
+                    flag.src = flagInfo.flag;
+                    flag.alt = flagInfo.description;
+                    flag.title = flagInfo.description;
+                })
+            })
+
+            // Close Button
+            var closeButton = document.createElement("button");
+            closeButton.className = "info-close";
+            var XLogo = document.createElement("i");
+            XLogo.classList = "fa-solid fa-x";
+            closeButton.appendChild(XLogo);
+
+            closeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                mapBox.removeChild(infoBox);
+            })
 
             infoBoxHeader.appendChild(namesContainer);
             // infoBoxHeader.appendChild(fullNamesContainer);
             infoBoxHeader.appendChild(flag);
+            infoBoxHeader.appendChild(closeButton);
 
 
             // Create all Info
