@@ -11,18 +11,19 @@
         href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css">
-    <script defer type="text/javascript" src="js/listPage.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer type="text/javascript" src="../js/countryQuiz.js"></script>
     <title>Click EU</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div id="wrapperID" class="wrapper full-height">
         <header class="main-header">
             <h1 id="headerLogo"><span><i class="fa-solid fa-earth-europe"></i></span> Click EU</h1>
             <nav>
                 <ul>
-                    <li id="homeLi"><a id="homeButton" href="index.html">Home <span><i class="fa-solid fa-house"></i></span></a></li>
-                    <li id="quizzesLi"><a id="quizzesButton" href="quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a></li>
+                    <li id="homeLi"><a id="homeButton" href="../index.html">Home <span><i class="fa-solid fa-house"></i></span></a></li>
+                    <li id="listLi"><a id="listButton" href="../list.html">List View <span><i class="fa-solid fa-bars"></i></span></a></li>
+                    <li id="quizzesLi"><a id="quizzesButton" href="../quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a></li>
                 </ul>
                 <div class="theme-dropdown">
                     <a id="themeButton" href="#">Theme <span><i class="fa-solid fa-palette"></i></span></a>
@@ -36,8 +37,9 @@
             <div id="collapsedNav">
                 <button id="collapsedNavButton"><i class="fa-solid fa-bars"></i></button>
                 <div id="navDropdownContent" class="nav-dropdown-content">
-                    <a id="homeButton" href="index.html">Home <span><i class="fa-solid fa-house"></i></span></a>
-                    <a id="quizzesButton" href="quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a>
+                    <a id="homeButton" href="../index.html">Home <span><i class="fa-solid fa-house"></i></span></a>
+                    <a id="listButton" href="../list.html">List View <span><i class="fa-solid fa-bars"></i></span></a>
+                    <a id="quizzesButton" href="../quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a>
                     <a class="system-theme" href="#">System Theme <span><i class="fa-solid fa-desktop"></i></span></a>
                     <a class="light-theme" href="#">Light Mode <span><i class="fa-solid fa-sun"></i></span></a>
                     <a class="dark-theme" href="#">Dark Mode <span><i class="fa-solid fa-moon"></i></span></a>
@@ -46,7 +48,21 @@
         </header>
 
         <main>
-            <ul id="list" class="list"></ul>
+            <div id="quizHeader" class="quiz-header"></div>
+            <div class="quiz">
+                <div class="quiz-top">
+                    <div>
+                        <h2>Pick the country where:</h2>
+                        <h2>Score: <span id="score"></span>/10</h2>
+                    </div>
+                    <h3 id="description"></h3>
+                </div>
+                <div id="flagGrid" class="flag-grid"></div>
+            </div>
+            <div class="other-quizzes-container">
+                <h2>Why not try other quizzes</h2>
+                <ul id="quizList" class="other-quizzes"></ul>
+            </div>
         </main>
 
         <footer>
@@ -59,8 +75,9 @@
                 
             </article>
             <nav>
-                <a id="homeButton" href="index.html">Home <span><i class="fa-solid fa-house"></i></span></a>
-                <a id="quizzesButton" href="quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a>
+                <a id="homeButton" href="../index.html">Home <span><i class="fa-solid fa-house"></i></span></a>
+                <a id="listButton" href="../list.html">List View <span><i class="fa-solid fa-bars"></i></span></a>
+                <a id="quizzesButton" href="../quizzes.html">Quizzes <span><i class="fa-solid fa-book-open"></i></span></a>
                 <a class="system-theme" href="#">System Theme <span><i class="fa-solid fa-desktop"></i></span></a>
                 <a class="light-theme" href="#">Light Mode <span><i class="fa-solid fa-sun"></i></span></a>
                 <a class="dark-theme" href="#">Dark Mode <span><i class="fa-solid fa-moon"></i></span></a>

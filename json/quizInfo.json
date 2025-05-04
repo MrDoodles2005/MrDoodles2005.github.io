@@ -14,23 +14,319 @@
             "title": "Guess The Country - Quiz",
             "quiz-desc": "Guess which European country is being described",
             "ID": "guessCountry",
-            "link": "#"
-        },
-        {
-            "image": "img/quiz-img/test.jpg",
-            "image-desc": "Test",
-            "title": "Test - Quiz",
-            "quiz-desc": "Test Description",
-            "ID": "test",
-            "link": "#"
-        },
-        {
-            "image": "img/quiz-img/test.jpg",
-            "image-desc": "Test",
-            "title": "Test - Quiz",
-            "quiz-desc": "Test Description",
-            "ID": "test",
-            "link": "#"
+            "link": "quizzes/countryQuiz.html",
+            "options": [
+                {
+                    "answer": "Norway",
+                    "description": "This mountainous country with deep costal inlets thrives on oil wealth. It shares a border with both Russia and the EU",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Belarus.png",
+                            "description": "Flag of Belarus",
+                            "name": "Belarus"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Finland.png",
+                            "description": "Flag of Finland",
+                            "name": "Finland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Switzerland.png",
+                            "description": "Flag of Switzerland",
+                            "name": "Switzerland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Norway.png",
+                            "description": "Flag of Norway",
+                            "name": "Norway"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Cyprus.png",
+                            "description": "Flag of Cyprus",
+                            "name": "Cyprus"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Ireland",
+                    "description": "This island nation, known for emerald landscapes and a language rarely spoken daily, uses the eurp but not the Schengen zone",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Malta.png",
+                            "description": "Flag of Malta",
+                            "name": "Malta"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Ireland.png",
+                            "description": "Flag of Ireland",
+                            "name": "Ireland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Cyprus.png",
+                            "description": "Flag of Cyprus",
+                            "name": "Cyprus"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Iceland.png",
+                            "description": "Flag of Iceland",
+                            "name": "Iceland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_United_Kingdom.png",
+                            "description": "Flag of United_Kingdom",
+                            "name": "United_Kingdom"
+                        }
+                    ]
+                },
+                {
+                    "answer": "France",
+                    "description": "This country, famed for its towering iron landmark, centuries of art and wine, and a motto of liberty, equality, and fraternity",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Romania.png",
+                            "description": "Flag of Romania",
+                            "name": "Romania"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Portugal.png",
+                            "description": "Flag of Portugal",
+                            "name": "Portugal"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Spain.png",
+                            "description": "Flag of Spain",
+                            "name": "Spain"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Italy.png",
+                            "description": "Flag of Italy",
+                            "name": "Italy"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_France.png",
+                            "description": "Flag of France",
+                            "name": "France"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Ukraine",
+                    "description": "This vast land of golden fields and black soil bridges Central and Eastern Europe, with a history shaped by empires, resilience in the face of invasion, and a deep cultural reverence for sunflowers and song.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Ukraine.png",
+                            "description": "Flag of Ukraine",
+                            "name": "Ukraine"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Romania.png",
+                            "description": "Flag of Romania",
+                            "name": "Romania"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Poland.png",
+                            "description": "Flag of Poland",
+                            "name": "Poland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Russia.png",
+                            "description": "Flag of Russia",
+                            "name": "Russia"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Latvia.png",
+                            "description": "Flag of Latvia",
+                            "name": "Latvia"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Andorra",
+                    "description": "Cradled in peaks where borders blur, this land without its own airport or army thrives on slopes, shops, and a centuries-old pact between two distant powers.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Monaco.png",
+                            "description": "Flag of Monaco",
+                            "name": "Monaco"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Liechtenstein.png",
+                            "description": "Flag of Liechtenstein",
+                            "name": "Liechtenstein"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Andorra.png",
+                            "description": "Flag of Andorra",
+                            "name": "Andorra"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_San_Marino.png",
+                            "description": "Flag of San Marino",
+                            "name": "San Marino"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Luxembourg.png",
+                            "description": "Flag of Luxembourg",
+                            "name": "Luxembourg"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Germany",
+                    "description": "Once split down the middle by ideology, this European nation rose from ashes to industry, where forests whisper old legends and cars are crafted with ruthless precision.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Denmark.png",
+                            "description": "Flag of Denmark",
+                            "name": "Denmark"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Poland.png",
+                            "description": "Flag of Poland",
+                            "name": "Poland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_France.png",
+                            "description": "Flag of France",
+                            "name": "France"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Germany.png",
+                            "description": "Flag of Germany",
+                            "name": "Germany"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_The_Netherlands.png",
+                            "description": "Flag of The Netherlands",
+                            "name": "The Netherlands"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Czechia",
+                    "description": "Bound by hills and history, this country blends Slavic soul with Central European charm, where a once-split kingdom now pours the world’s oldest lager beneath gothic spires.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Slovakia.png",
+                            "description": "Flag of Slovakia",
+                            "name": "Slovakia"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Czechia.png",
+                            "description": "Flag of Czechia",
+                            "name": "Czechia"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Slovenia.png",
+                            "description": "Flag of Slovenia",
+                            "name": "Slovenia"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Hungary.png",
+                            "description": "Flag of Hungary",
+                            "name": "Hungary"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Poland.png",
+                            "description": "Flag of Poland",
+                            "name": "Poland"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Sweden",
+                    "description": "Stretched along northern shores where silence meets snow, this land of pine and progress gave the world pop, pacifism, and flat-packed ingenuity wrapped in understated style.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Norway.png",
+                            "description": "Flag of Norway",
+                            "name": "Norway"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Sweden.png",
+                            "description": "Flag of Sweden",
+                            "name": "Sweden"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Finland.png",
+                            "description": "Flag of Finland",
+                            "name": "Finland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Iceland.png",
+                            "description": "Flag of Iceland",
+                            "name": "Iceland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Denmark.png",
+                            "description": "Flag of Denmark",
+                            "name": "Denmark"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Poland",
+                    "description": "This country, known for its rich history and vibrant culture, is home to pierogi, strong resistance, and a capital once rebuilt from rubble.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Austria.png",
+                            "description": "Flag of Austria",
+                            "name": "Austria"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Monaco.png",
+                            "description": "Flag of Monaco",
+                            "name": "Monaco"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Poland.png",
+                            "description": "Flag of Poland",
+                            "name": "Poland"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Denmark.png",
+                            "description": "Flag of Denmark",
+                            "name": "Denmark"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Latvia.png",
+                            "description": "Flag of Latvia",
+                            "name": "Latvia"
+                        }
+                    ]
+                },
+                {
+                    "answer": "Kazakhstan",
+                    "description": "This vast, landlocked country, known for its endless steppes and a spaceport that sent the first man to orbit, balances ancient traditions with a modern, oil-rich economy.",
+                    "choices": [
+                        {
+                            "flag": "../img/flags/Flag_of_Kazakhstan.png",
+                            "description": "Flag of Kazakhstan",
+                            "name": "Kazakhstan"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Spain.png",
+                            "description": "Flag of Spain",
+                            "name": "Spain"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_United_Kingdom.png",
+                            "description": "Flag of United Kingdom",
+                            "name": "United Kingdom"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Russia.png",
+                            "description": "Flag of Russia",
+                            "name": "Russia"
+                        },
+                        {
+                            "flag": "../img/flags/Flag_of_Armenia.png",
+                            "description": "Flag of Armenia",
+                            "name": "Armenia"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

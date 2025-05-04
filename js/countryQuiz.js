@@ -1,9 +1,9 @@
 var quizHeader = document.getElementById("quizHeader");
 var flagGrid = document.getElementById("flagGrid");
-var country = document.getElementById("country");
+var quizList = document.getElementById('quizList');
 var score = document.getElementById("score");
-var completedText = document.getElementById("completedText");
-var flagArray = [];
+var description = document.getElementById("description");
+var answer = "";
 var globalIndex = 0;
 var scoreInt = 0;
 var thisQuizTitle = "";
@@ -80,7 +80,7 @@ collapsedNavButton.addEventListener("click", function(e) {
 // gets the flagGallery json file and creates the list using its contents
 fetch("../json/quizInfo.json").then(function(res) {
     res.json().then(function(json) {
-        var el = json.quizzes[0];
+        var el = json.quizzes[1];
 
         // Create image
         var img = document.createElement("img");
@@ -106,77 +106,56 @@ fetch("../json/quizInfo.json").then(function(res) {
 
         quizHeader.appendChild(img);
         quizHeader.appendChild(infoContainer);
-    })
-})
-
-fetch("../json/flagGallery.json").then(function(res) {
-    res.json().then(function(json) {
-        json.countries.forEach(function(el) {
-            var arrayEntry = [el.name, "../" +  el.flag];
-            flagArray.push(arrayEntry)
-        })
         
-        flagArray.sort(() => Math.random() - 0.5);
-
-        flagArray.forEach(function(el) {
-            var flagBox = document.createElement("button");
-            flagBox.className = el[0];
-            flagBox.dataset.done = false;
-
-            flagBox.addEventListener("click", function(e) {
-                e.preventDefault();
-                
-                if (flagBox.dataset.done == "false") {
-                    if (country.innerText === flagBox.className) {
-                        scoreInt++;
-                        flagBox.style.backgroundColor = "rgba(21, 255, 0, 0.3)";
-                        flagBox.dataset.done = true;
-                    }
-                    else {
-                        var children = flagGrid.children;
-                        for (var i = 0; i < children.length; i++) {
-                            if (country.innerText === children[i].className) {
-                                children[i].style.backgroundColor = "rgba(255, 0, 0, 0.3)";
-                                children[i].dataset.done = true;
-                            }
-                        }
-                    }
-                
-                    globalIndex++;
-                }
-
-                updateTop();
-            })
-
-            var flag = document.createElement("img");
-            flag.src = el[1];
-            flag.alt = "Country Flag";
-            flag.title = "Country Flag";
-
-            flagBox.appendChild(flag);
-
-            flagGrid.appendChild(flagBox);
-        })
-
-        updateTop();
+        update(el)
     })
 })
 
-function updateTop() {
-    fetch("../json/flagGallery.json").then(function(res) {
-        res.json().then(function(json) {
-            if (globalIndex < 50) {
-                var el = json.countries[globalIndex];
-                country.innerText = el.name;
-            }
-            else {
-                globalIndex = 50;
-                completedText.innerText = "COMPLETED";
-            }
-            score.innerHTML = scoreInt;
-        })
-    })
+function update(quiz) {
+    var option = quiz.options[globalIndex];
+    if (globalIndex < 10) {
+        console.log(globalIndex)
+        description.innerText = option.description;
+        answer = option.answer;
+        flagGrid.innerHTML = "";
+    }
+    else {
+        globalIndex = 10;
+        description.innerText = "COMPLETED";
+    }
 
+    score.innerHTML = scoreInt;
+
+    option.choices.forEach(function(el) {
+        var flagBox = document.createElement("button");
+        flagBox.className = el.name;
+        flagBox.dataset.done = false;
+
+        flagBox.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            if (answer === flagBox.className) {
+                scoreInt++;
+            }
+
+            globalIndex++;
+            update(quiz);
+        })
+
+        var flag = document.createElement("img");
+        flag.src = el.flag;
+        flag.alt = el.description;
+        flag.title = el.description;
+
+        var name = document.createElement("h2");
+        name.innerText = el.name;
+
+        flagBox.appendChild(flag);
+        flagBox.appendChild(name);
+
+        flagGrid.appendChild(flagBox);
+
+    })
 }
 
 // gets the flagGallery json file and creates the list using its contents
@@ -224,7 +203,7 @@ fetch("../json/quizInfo.json").then(function(res) {
                 quizList.appendChild(listEntry);
             }
         })
-        
+
         // Create list element
         var listEntry = document.createElement("li");
         listEntry.className = "sporcle-link";

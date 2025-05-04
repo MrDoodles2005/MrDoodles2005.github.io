@@ -3,49 +3,71 @@ var list = document.getElementById('list');
 var collapsedNavButton = document.getElementById('collapsedNavButton');
 var navDropdownContent = document.getElementById('navDropdownContent');
 var themeButton = document.getElementById('themeButton');
-var quizzesButton = document.getElementById('quizzesButton');
-var quizzesLi = document.getElementById('quizzesLi');
-var homeButton = document.getElementById('homeButton');
-var homeLi = document.getElementById('homeLi');
 
 var themeDropdownContent = document.getElementById('themeDropdownContent');
-var systemThemeButton = document.getElementById('systemTheme');
-var lightThemeButton = document.getElementById('lightTheme');
-var darkThemeButton = document.getElementById('darkTheme');
+
+var theme = localStorage.getItem("theme") || "light dark";
+setColorScheme(theme);
+
+for (systemThemeButton of document.getElementsByClassName('system-theme')) {
+    systemThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("light dark");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
+
+for (lightThemeButton of document.getElementsByClassName('light-theme')) {
+    lightThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("light");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
+
+for (darkThemeButton of document.getElementsByClassName('dark-theme')) {
+    darkThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("dark");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
 
 // Night Mode Button Functionality
 themeButton.addEventListener("click", function(e) {
     e.preventDefault();
-    if (themeDropdownContent.style.display == "none")
+    if (themeDropdownContent.style.display == "none") {
         themeDropdownContent.style.display = "block";
-    else
+        
+    }
+    else {
         themeDropdownContent.style.display = "none";
-})
-
-systemThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("light dark");
-    themeDropdownContent.style.display = "none";
-    closeNav();
-})
-
-lightThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("light");
-    themeDropdownContent.style.display = "none";
-    closeNav();
-})
-
-darkThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("dark");
-    themeDropdownContent.style.display = "none";
-    closeNav();
+    } 
 })
 
 function setColorScheme(mode) {
+    localStorage.setItem("theme", mode)
     document.documentElement.dataset.colorScheme = mode;
 }
+
+collapsedNavButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    // Display Nav Menu
+    if (navDropdownContent.style.display == "none") {
+        navDropdownContent.style.display = "block";
+    }
+    else {
+        navDropdownContent.style.display = "none";
+    }
+
+    console.log("Nav Menu");
+})
 
 // gets the flagGallery json file and creates the list using its contents
 fetch("../json/flagGallery.json").then(function(res) {
@@ -165,11 +187,24 @@ function displayDropDown(index, content, chevron){
             history.appendChild(hHeader);
             history.appendChild(hContent);
 
+            var WikiLink = document.createElement("a");
+            WikiLink.className = "wiki-link";
+            WikiLink.href = el.wiki;
+            var WikiImg = document.createElement("img");
+            WikiImg.src = "../img/Wikipedia.png";
+            WikiImg.alt = "Wikipedia Logo";
+            WikiImg.title = "Wikipedia Logo";
+            WikiLink.appendChild(WikiImg);
+            var WikiText = document.createElement("p")
+            WikiText.innerText = "More info on Wikipedia";
+            WikiLink.appendChild(WikiText);
+
             // Adds info to content
             content.appendChild(fullNames);
             content.appendChild(quickFacts);
             content.appendChild(language);
             content.appendChild(history);
+            content.appendChild(WikiLink);
         })
     })
 }
@@ -178,31 +213,4 @@ function collapseDropDown(index, content, chevron){
     chevron.className = "fa-solid fa-chevron-down";
     content.innerHTML = "";
 
-}
-
-collapsedNavButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    // Display Nav Menu
-    if (navDropdownContent.style.display == "none") {
-        navDropdownContent.style.display = "block";
-        navDropdownContent.appendChild(homeButton);
-        navDropdownContent.appendChild(quizzesButton);
-        navDropdownContent.appendChild(systemThemeButton);
-        navDropdownContent.appendChild(lightThemeButton);
-        navDropdownContent.appendChild(darkThemeButton);
-    }
-    else {
-        closeNav();
-    }
-
-    console.log("Nav Menu");
-})
-
-function closeNav() {
-    navDropdownContent.style.display = "none";
-    homeLi.appendChild(homeButton);
-    quizzesLi.appendChild(quizzesButton);
-    themeDropdownContent.appendChild(systemThemeButton);
-    themeDropdownContent.appendChild(lightThemeButton);
-    themeDropdownContent.appendChild(darkThemeButton);
 }

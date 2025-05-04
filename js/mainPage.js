@@ -8,15 +8,41 @@ var newX = 0, newY = 0, startX = 0, startY = 0;
 var collapsedNavButton = document.getElementById('collapsedNavButton');
 var navDropdownContent = document.getElementById('navDropdownContent');
 var themeButton = document.getElementById('themeButton');
-var quizzesButton = document.getElementById('quizzesButton');
-var quizzesLi = document.getElementById('quizzesLi');
-var listButton = document.getElementById('listButton');
-var listLi = document.getElementById('listLi');
 
 var themeDropdownContent = document.getElementById('themeDropdownContent');
-var systemThemeButton = document.getElementById('systemTheme');
-var lightThemeButton = document.getElementById('lightTheme');
-var darkThemeButton = document.getElementById('darkTheme');
+
+var theme = localStorage.getItem("theme") || "light dark";
+setColorScheme(theme);
+
+for (systemThemeButton of document.getElementsByClassName('system-theme')) {
+    systemThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("light dark");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
+
+for (lightThemeButton of document.getElementsByClassName('light-theme')) {
+    lightThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("light");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
+
+for (darkThemeButton of document.getElementsByClassName('dark-theme')) {
+    darkThemeButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    
+        setColorScheme("dark");
+        themeDropdownContent.style.display = "none";
+        navDropdownContent.style.display = "none";
+    })
+}
 
 // Night Mode Button Functionality
 themeButton.addEventListener("click", function(e) {
@@ -27,36 +53,27 @@ themeButton.addEventListener("click", function(e) {
     }
     else {
         themeDropdownContent.style.display = "none";
-    }
-        
-
-    
-})
-
-systemThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("light dark");
-    themeDropdownContent.style.display = "none";
-    closeNav();
-})
-
-lightThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("light");
-    themeDropdownContent.style.display = "none";
-    closeNav();
-})
-
-darkThemeButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    setColorScheme("dark");
-    themeDropdownContent.style.display = "none";
-    closeNav();
+    } 
 })
 
 function setColorScheme(mode) {
+    localStorage.setItem("theme", mode)
     document.documentElement.dataset.colorScheme = mode;
 }
+
+collapsedNavButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    // Display Nav Menu
+    if (navDropdownContent.style.display == "none") {
+        navDropdownContent.style.display = "block";
+    }
+    else {
+        navDropdownContent.style.display = "none";
+    }
+
+    console.log("Nav Menu");
+})
+
 
 map.addEventListener('mousedown', mouseDown);
 map.addEventListener('touchstart', touchStart);
@@ -90,7 +107,7 @@ function mouseUp(e){
 function touchStart(e) {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
-
+    
     document.addEventListener('touchmove', touchMove);
     document.addEventListener('touchend', touchEnd);
 }
@@ -98,7 +115,7 @@ function touchStart(e) {
 function touchMove(e) {
     newX = startX - e.touches[0].clientX;
     newY = startY - e.touches[0].clientY;
-
+    
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
 
@@ -177,9 +194,13 @@ fetch("../json/svgs.json").then(function(res) {
 
             countrySVG.addEventListener('click', function(e) {
                 e.preventDefault();
-                displayInfo(countryIndex);
 
-                console.log(el.name);
+                for(var country of map.children) {
+                    country.classList.remove("selected-country");
+                }
+
+                countrySVG.classList.add("selected-country");
+                displayInfo(countryIndex);
             })
 
             map.appendChild(countrySVG);
@@ -265,6 +286,11 @@ function displayInfo(index) {    // Adds country info to the map info box
 
             closeButton.addEventListener('click', function(e) {
                 e.preventDefault();
+
+                for(var country of map.children) {
+                    country.classList.remove("selected-country");
+                }
+
                 mapBox.removeChild(infoBox);
             })
 
@@ -293,23 +319,57 @@ function displayInfo(index) {    // Adds country info to the map info box
             var lBody = document.createElement("div");
             lBody.className = "language-body";
 
+
             // Brief History
             var briefHistory = document.createElement("article");
             briefHistory.className = "brief-history";
             var bhContent = document.createElement("p");
             bhContent.innerHTML = el["brief-history"];
+            var bhWikiLink = document.createElement("a");
+            bhWikiLink.className = "wiki-link";
+            bhWikiLink.href = el.wiki;
+            var bhWikiImg = document.createElement("img");
+            bhWikiImg.src = "../img/Wikipedia.png";
+            bhWikiImg.alt = "Wikipedia Logo";
+            bhWikiImg.title = "Wikipedia Logo";
+            bhWikiLink.appendChild(bhWikiImg);
+            var bhWikiText = document.createElement("p")
+            bhWikiText.innerText = "More info on Wikipedia";
+            bhWikiLink.appendChild(bhWikiText);
 
             // Quick Facts
             var quickFacts = document.createElement("article");
             quickFacts.className = "quick-facts";
             var qfContent = document.createElement("p");
             qfContent.innerHTML = el["quick-facts"];
+            var qfWikiLink = document.createElement("a");
+            qfWikiLink.className = "wiki-link";
+            qfWikiLink.href = el.wiki;
+            var qfWikiImg = document.createElement("img");
+            qfWikiImg.src = "../img/Wikipedia.png";
+            qfWikiImg.alt = "Wikipedia Logo";
+            qfWikiImg.title = "Wikipedia Logo";
+            qfWikiLink.appendChild(qfWikiImg);
+            var qfWikiText = document.createElement("p")
+            qfWikiText.innerText = "More info on Wikipedia";
+            qfWikiLink.appendChild(qfWikiText);
 
             // Language(s)
             var language = document.createElement("article");
             language.className = "language";
             var lContent = document.createElement("p");
             lContent.innerHTML = el.language;
+            var langWikiLink = document.createElement("a");
+            langWikiLink.className = "wiki-link";
+            langWikiLink.href = el.wiki;
+            var langWikiImg = document.createElement("img");
+            langWikiImg.src = "../img/Wikipedia.png";
+            langWikiImg.alt = "Wikipedia Logo";
+            langWikiImg.title = "Wikipedia Logo";
+            langWikiLink.appendChild(langWikiImg);
+            var langWikiText = document.createElement("p")
+            langWikiText.innerText = "More info on Wikipedia";
+            langWikiLink.appendChild(langWikiText);
 
             // Adds carousel nav
             var nav = document.createElement("nav");
@@ -363,12 +423,15 @@ function displayInfo(index) {    // Adds country info to the map info box
 
             // Add to Body Containers
             briefHistory.appendChild(bhContent);
+            briefHistory.appendChild(bhWikiLink);
             bhBody.appendChild(briefHistory);
 
             quickFacts.appendChild(qfContent);
+            quickFacts.appendChild(qfWikiLink);
             qfBody.appendChild(quickFacts);
 
             language.appendChild(lContent);
+            language.appendChild(langWikiLink);
             lBody.appendChild(language);
 
             infoBody.appendChild(bhBody);
@@ -435,31 +498,4 @@ function showExpandedNames(fullNamesContainer, el) {
     })
 
     fullNamesContainer.appendChild(lessNamesButton);
-}
-
-collapsedNavButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    // Display Nav Menu
-    if (navDropdownContent.style.display == "none") {
-        navDropdownContent.style.display = "block";
-        navDropdownContent.appendChild(quizzesButton);
-        navDropdownContent.appendChild(listButton);
-        navDropdownContent.appendChild(systemThemeButton);
-        navDropdownContent.appendChild(lightThemeButton);
-        navDropdownContent.appendChild(darkThemeButton);
-    }
-    else {
-        closeNav();
-    }
-
-    console.log("Nav Menu");
-})
-
-function closeNav() {
-    navDropdownContent.style.display = "none";
-    quizzesLi.appendChild(quizzesButton);
-    listLi.appendChild(listButton);
-    themeDropdownContent.appendChild(systemThemeButton);
-    themeDropdownContent.appendChild(lightThemeButton);
-    themeDropdownContent.appendChild(darkThemeButton);
 }
