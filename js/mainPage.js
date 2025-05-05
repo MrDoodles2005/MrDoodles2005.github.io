@@ -1,3 +1,5 @@
+document.documentElement.style.setProperty('--scrollbar-width', (window.innerWidth - document.documentElement.clientWidth) + "px");
+
 var gridList = document.getElementById('gridList');
 var mapBox = document.getElementById('mapBox');
 var headerLogo = document.getElementById('headerlogo');
@@ -10,6 +12,7 @@ var navDropdownContent = document.getElementById('navDropdownContent');
 var themeButton = document.getElementById('themeButton');
 
 var themeDropdownContent = document.getElementById('themeDropdownContent');
+themeDropdownContent.style.display = "none"
 
 var theme = localStorage.getItem("theme") || "light dark";
 setColorScheme(theme);
@@ -65,7 +68,7 @@ collapsedNavButton.addEventListener("click", function(e) {
     e.preventDefault();
     // Display Nav Menu
     if (navDropdownContent.style.display == "none") {
-        navDropdownContent.style.display = "block";
+        navDropdownContent.style.display = "grid";
     }
     else {
         navDropdownContent.style.display = "none";
@@ -92,9 +95,6 @@ function mouseMove(e) {
   
     startX = e.clientX;
     startY = e.clientY;
-
-    // map.style.top = (map.offsetTop - newY) + 'px';
-    // map.style.left = (map.offsetLeft - newX) + 'px';
 
     map.style.top = 'clamp(' + (-402 - (1000 - mapBox.offsetHeight)) + 'px, ' + (map.offsetTop - newY) + 'px, 0px)';
     map.style.left = 'clamp(' + (-22 - (1180 - mapBox.offsetWidth)) + 'px, ' + (map.offsetLeft - newX) + 'px, 0px)';

@@ -61,7 +61,7 @@ collapsedNavButton.addEventListener("click", function(e) {
     e.preventDefault();
     // Display Nav Menu
     if (navDropdownContent.style.display == "none") {
-        navDropdownContent.style.display = "block";
+        navDropdownContent.style.display = "grid";
     }
     else {
         navDropdownContent.style.display = "none";
