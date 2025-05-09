@@ -1,5 +1,3 @@
-document.documentElement.style.setProperty('--scrollbar-width', (window.innerWidth - document.documentElement.clientWidth) + "px");
-
 var gridList = document.getElementById('gridList');
 var mapBox = document.getElementById('mapBox');
 var headerLogo = document.getElementById('headerlogo');
